@@ -19,7 +19,10 @@ jobs:
           java-version: '17' # Cambia a '11' o '21' según la versión de tu proyecto
           distribution: 'temurin'
 
-      - name: Ejecutar Tests
+      - name: Permisos para Gradle Wrapper
+        run: chmod +x ./gradlew
+
+      - name: Ejecutar pruebas
         run: ./gradlew test
 
       - name: Ejecutar Build
