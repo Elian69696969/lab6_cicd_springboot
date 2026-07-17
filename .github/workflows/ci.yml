@@ -1,0 +1,26 @@
+name: CI SpringBoot
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17' # Cambia a '11' o '21' según la versión de tu proyecto
+          distribution: 'temurin'
+
+      - name: Ejecutar Tests
+        run: ./gradlew test
+
+      - name: Ejecutar Build
+        run: ./gradlew build
